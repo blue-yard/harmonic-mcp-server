@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js",
-    "dev": "tsx src/index.ts",
-    "start": "node dist/harmonic-mcp.js"
+    "build": "node build-final.js",
+    "dev": "tsx src/harmonic-mcp.ts",
+    "start": "node src/cli.js"
   },
   "type": "module",
   "keywords": [],
@@ -22,6 +22,6 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "pkg": "^5.8.1"
+    "@vercel/ncc": "^0.38.3"
   }
 }

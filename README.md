@@ -8,7 +8,7 @@ A Model Context Protocol (MCP) server that provides access to Harmonic.ai's API 
 - Get detailed company information by domain
 - Search for people/professionals
 - Get detailed person information by ID
-- Built as a single binary for easy deployment
+- Standalone package with all dependencies included
 
 ## Building
 
@@ -17,15 +17,12 @@ Install dependencies:
 npm install
 ```
 
-Build the binary:
+Build the server:
 ```bash
 npm run build
 ```
 
-This will create platform-specific binaries in the `bin/` directory:
-- `harmonic-mcp-macos-x64` - macOS (Intel/Apple Silicon via Rosetta)
-- `harmonic-mcp-linux-x64` - Linux x64
-- `harmonic-mcp-win-x64.exe` - Windows x64
+This creates a standalone package in `dist/standalone/` with all dependencies included.
 
 ## Usage with Claude Desktop
 
@@ -39,7 +36,8 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 {
   "mcpServers": {
     "harmonic": {
-      "command": "/path/to/harmonic-mcp-macos-x64"
+      "command": "node",
+      "args": ["/absolute/path/to/HarmonicMCPServer/dist/standalone/index.js"]
     }
   }
 }
