@@ -18,16 +18,16 @@ try {
   console.log('Compiling TypeScript...');
   execSync('npx tsc', { stdio: 'inherit' });
   
-  // Step 2: Bundle with esbuild into a single file
-  console.log('Bundling with esbuild...');
-  execSync(`npx esbuild dist/harmonic-mcp.js --bundle --platform=node --target=node18 --outfile=dist/harmonic-mcp-bundle.js --external:@modelcontextprotocol/sdk`, { stdio: 'inherit' });
+  // Step 2: Copy the corrected server
+  console.log('Copying Harmonic server...');
+  fs.copyFileSync('src/harmonic-server.js', 'dist/harmonic-server.js');
   
   // Step 3: Create a standalone directory with all dependencies
   console.log('Creating standalone package...');
   fs.mkdirSync('dist/standalone');
   
-  // Copy the bundled file
-  fs.copyFileSync('dist/harmonic-mcp-bundle.js', 'dist/standalone/index.js');
+  // Copy the server file
+  fs.copyFileSync('dist/harmonic-server.js', 'dist/standalone/index.js');
   
   // Create package.json for the standalone version
   const standalonePackage = {

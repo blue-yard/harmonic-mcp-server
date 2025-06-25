@@ -56,10 +56,11 @@ Use the harmonic_set_api_key tool with your API key
 ```
 
 5. Now you can use the Harmonic tools:
-- `harmonic_search_companies` - Search for companies
-- `harmonic_get_company` - Get company details by domain
-- `harmonic_search_people` - Search for people
-- `harmonic_get_person` - Get person details by ID
+- `harmonic_search_company_by_domain` - Search for a company by its website domain
+- `harmonic_search_companies` - Search for companies by query
+- `harmonic_search_people` - Search for people/professionals
+- `harmonic_get_saved_search_results` - Get results from a saved search
+- `harmonic_get_company_employees` - Get all active employees from a company
 
 ## Available Tools
 
@@ -69,31 +70,43 @@ Set your Harmonic API key for authentication.
 Parameters:
 - `api_key` (required): Your Harmonic API key
 
+### harmonic_search_company_by_domain
+Search for a company by its website domain using POST method.
+
+Parameters:
+- `domain` (required): The website domain of the company (e.g., harmonic.ai)
+
 ### harmonic_search_companies
-Search for companies in the Harmonic database.
+Search for companies by query using GET method.
 
 Parameters:
 - `query` (required): Search query for companies
-- `limit` (optional): Maximum number of results (default: 10)
-
-### harmonic_get_company
-Get detailed information about a company by its domain.
-
-Parameters:
-- `domain` (required): The domain of the company (e.g., example.com)
+- `size` (optional): Number of results to return (default: 50)
+- `cursor` (optional): Cursor for pagination
 
 ### harmonic_search_people
-Search for people/professionals in the Harmonic database.
+Search for people/professionals using GET method.
 
 Parameters:
 - `query` (required): Search query for people
-- `limit` (optional): Maximum number of results (default: 10)
+- `size` (optional): Number of results to return (default: 50)
+- `cursor` (optional): Cursor for pagination
 
-### harmonic_get_person
-Get detailed information about a person by their ID.
+### harmonic_get_saved_search_results
+Get results from a saved search.
 
 Parameters:
-- `person_id` (required): The ID of the person in Harmonic's database
+- `search_id` (required): The ID of the saved search
+- `size` (optional): Number of results to return (default: 50)
+- `cursor` (optional): Cursor for pagination
+
+### harmonic_get_company_employees
+Get all active employees from a company.
+
+Parameters:
+- `company_id` (required): The ID of the company
+- `size` (optional): Number of results to return (default: 50)
+- `cursor` (optional): Cursor for pagination
 
 ## Development
 
