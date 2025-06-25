@@ -1,0 +1,27 @@
+{
+  "name": "harmonicmcpserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/harmonic-mcp.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.13.1",
+    "@types/node": "^24.0.4",
+    "@types/node-fetch": "^2.6.12",
+    "esbuild": "^0.25.5",
+    "node-fetch": "^3.3.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
+}
