@@ -50,7 +50,9 @@ try {
   
   // Make the main file executable
   const mainFile = fs.readFileSync('dist/standalone/index.js', 'utf8');
-  fs.writeFileSync('dist/standalone/index.js', '#!/usr/bin/env node\n' + mainFile);
+  // Remove any existing shebang lines
+  const cleanedFile = mainFile.replace(/^#!.*\n/gm, '');
+  fs.writeFileSync('dist/standalone/index.js', '#!/usr/bin/env node\n' + cleanedFile);
   fs.chmodSync('dist/standalone/index.js', '755');
   
   // Create a simple executable wrapper

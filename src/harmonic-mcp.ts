@@ -24,9 +24,11 @@ class HarmonicClient {
   private async makeRequest(endpoint: string, method: string = 'GET', body?: any) {
     const url = `${HARMONIC_API_BASE}${endpoint}`;
     
+    // Try different header formats based on search results
     const headers: Record<string, string> = {
-      'Authorization': `Bearer ${this.apiKey}`,
+      'apikey': this.apiKey,  // Based on Pipedream example
       'Content-Type': 'application/json',
+      'website_domain': 'harmonic.ai'  // May be required
     };
 
     const options: RequestInit = {
@@ -43,6 +45,15 @@ class HarmonicClient {
       
       if (!response.ok) {
         const errorText = await response.text();
+        console.error(`API Response: ${response.status} - ${errorText}`);
+        
+        // Provide helpful error messages
+        if (response.status === 403) {
+          throw new Error(`Authentication failed (403). Please check your API key. Response: ${errorText}`);
+        } else if (response.status === 401) {
+          throw new Error(`Unauthorized (401). API key may be invalid or expired. Response: ${errorText}`);
+        }
+        
         throw new Error(`Harmonic API error: ${response.status} - ${errorText}`);
       }
 

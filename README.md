@@ -36,12 +36,17 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 {
   "mcpServers": {
     "harmonic": {
-      "command": "node",
+      "command": "/usr/local/bin/node",
       "args": ["/absolute/path/to/HarmonicMCPServer/dist/standalone/index.js"]
     }
   }
 }
 ```
+
+**Important**: 
+- Replace `/absolute/path/to/HarmonicMCPServer` with the actual path to your project
+- Use the full path to node (find it with `which node`)
+- Make sure the path has no spaces or special characters
 
 3. Restart Claude Desktop
 
