@@ -36,7 +36,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 {
   "mcpServers": {
     "harmonic": {
-      "command": "/usr/local/bin/node",
+      "command": "node",
       "args": ["/absolute/path/to/HarmonicMCPServer/dist/standalone/index.js"]
     }
   }
